@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # Replace with the URL of YOUR manifests repo
+    repoURL: https://github.com/YOUR_GITHUB_USERNAME/gitops-demo-manifests.git
+    targetRevision: main
+    path: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo
+  syncPolicy:
+    automated:
+      prune: true      # delete cluster resources that were removed from Git
+      selfHeal: true   # revert manual changes made with kubectl
+    syncOptions:
+      - CreateNamespace=true
