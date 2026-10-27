@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     # Replace with the URL of YOUR manifests repo
-    repoURL: https://github.com/YOUR_GITHUB_USERNAME/gitops-demo-manifests.git
+    repoURL: https://github.com/ja983/gitops-demo-manifests.git
     targetRevision: main
     path: manifests
   destination:
